@@ -34,21 +34,33 @@ def parse_command_line():
         help="List messages in queue",
         action="store_true")
     parser.add_argument(
+        "--user",
+        help="The user to use for the RabbitMQ connection, default = %(default)s",
+        default="tester")
+    parser.add_argument(
+        "--password",
+        help="The password to use for the RabbitMQ connection, default = %(default)s",
+        default="linux")
+    parser.add_argument(
+        "--vhost",
+        help="The vhost to use for the RabbitMQ connection, default = %(default)s",
+        default="tester")
+    parser.add_argument(
         "--delete",
         metavar="QUEUE",
         help="Delete QUEUE")
     return parser.parse_args()
 
 
-def open_connection(broker, queue_name, durable):
+def open_connection(broker, vhost, user, password, queue_name, durable):
     try:
         connection = pika.BlockingConnection(pika.ConnectionParameters(
             host=broker,
-            virtual_host="tester",
-            credentials=pika.PlainCredentials('tester', 'linux')
+            virtual_host=vhost,
+            credentials=pika.PlainCredentials(user, password)
         ))
-    except pika.exceptions.AMQPConnectionError:
-        print("connection failure for %s" % broker)
+    except pika.exceptions.AMQPConnectionError as e:
+        print("connection failure for %s: %s" % (broker, e))
         return None, None
     channel = connection.channel()
     channel.queue_declare(queue_name, durable=durable)
@@ -59,7 +71,7 @@ def open_connection(broker, queue_name, durable):
 def main(options):
     for broker in options.BROKER:
         connection, channel = open_connection(
-            broker, options.queue, options.durable)
+            broker, options.vhost, options.user, options.password, options.queue, options.durable)
         if connection is None:
             continue
         if options.send:
