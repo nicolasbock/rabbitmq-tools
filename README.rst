@@ -11,8 +11,8 @@ Usage
 Let's say we have a RabbitMQ cluster at IP address `10.5.0.{1,2,3}`.
 Prepare the cluster by running:
 
-.. code-block:: bash
-   ./prepare-rabbit.sh 10.5.0.1
+.. code:: bash
+   $ ./prepare-rabbit.sh 10.5.0.1
 
 This script will create a test user and a test vhost. Detailed usage
 is:
