@@ -32,7 +32,7 @@ is:
 
 Set up a `virtualenv` to run the actual test script:
 
-.. code-block::
+.. code-block:: bash
    $ virtualenv venv
    $ . venv/bin/activate
    $ pip install -r requirements.txt
@@ -40,5 +40,32 @@ Set up a `virtualenv` to run the actual test script:
 
 Now send a message:
 
-.. code-block::
+.. code-block:: bash
    $ test-rabbit.py 10.5.0.1 --send "My first message"
+
+Full usage:
+
+.. code-block::
+   usage: test-rabbit.py [-h] [--durable] [--queue QUEUE] [--send MSG] [--get]
+                         [--list] [--user USER] [--password PASSWORD]
+                         [--vhost VHOST] [--delete QUEUE]
+                         BROKER [BROKER ...]
+
+   positional arguments:
+     BROKER               The IP address or hostname of the broker, default =
+                          localhost
+
+   optional arguments:
+     -h, --help           show this help message and exit
+     --durable
+     --queue QUEUE        The queue to use, default = test_queue
+     --send MSG           Send MSG to queue
+     --get                Get one message from queue
+     --list               List messages in queue
+     --user USER          The user to use for the RabbitMQ connection, default =
+                          tester
+     --password PASSWORD  The password to use for the RabbitMQ connection,
+                          default = linux
+     --vhost VHOST        The vhost to use for the RabbitMQ connection, default =
+                          tester
+     --delete QUEUE       Delete QUEUE
