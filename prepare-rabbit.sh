@@ -1,12 +1,12 @@
 #!/bin/bash
 
-set -u
+set -u -e
 
 usage() {
       cat <<EOF
 Usage:
 
-$(basename $0) [options] BROKER
+$(basename $0) [options] [user@]BROKER_IP
 
 Where BROKER is the address of the RabbitMQbroker to prepare.
 
