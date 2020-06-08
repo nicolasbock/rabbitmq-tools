@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -u -e
+set -u
 
 usage() {
       cat <<EOF
@@ -12,10 +12,19 @@ Where BROKER is the address of the RabbitMQbroker to prepare.
 
 Options:
 
---user USER       The username to set
---password PASS   The password for USER
---vhost VHOST     The vhost to create
+--user USER       	The username to set
+--password PASS   	The password for USER
+--vhost VHOST     	The vhost to create
+--transport {lxc,ssh}   How to connect to the brokers
 EOF
+}
+
+_ssh() {
+  ssh ${broker} -- "${@}"
+}
+
+_lxc() {
+  lxc exec ${broker} -- "${@}"
 }
 
 on_exit() {
@@ -30,6 +39,7 @@ trap on_exit EXIT
 user=tester
 password=linux
 vhost=tester
+transport=ssh
 
 while (( $# > 0 )); do
   case $1 in
@@ -45,6 +55,10 @@ while (( $# > 0 )); do
       vhost=$2
       shift
       ;;
+    --transport)
+      transport=$2
+      shift
+      ;;
     --help)
       usage
       exit
@@ -58,10 +72,9 @@ done
 
 set -x
 
-ssh ${broker} -- sudo rabbitmqctl add_user ${user} ${password}
-ssh ${broker} -- sudo rabbitmqctl add_vhost ${vhost}
-ssh ${broker} -- sudo rabbitmqctl set_permissions -p ${vhost} ${user} \".*\" \".*\" \".*\"
-ssh ${broker} -- sudo rabbitmqctl set_policy -p ${vhost} HA \'.*\' \'{\"ha-mode\": \"all\"}\'
-
-ssh ${broker} -- sudo rabbitmqctl list_permissions -p ${vhost}
-ssh ${broker} -- sudo rabbitmqctl list_policies -p ${vhost}
+_${transport} sudo rabbitmqctl add_user ${user} ${password}
+_${transport} sudo rabbitmqctl add_vhost ${vhost}
+_${transport} sudo rabbitmqctl set_permissions -p ${vhost} ${user} ".*" ".*" ".*"
+_${transport} sudo rabbitmqctl set_policy -p ${vhost} HA ".*" '{"ha-mode": "all"}'
+_${transport} sudo rabbitmqctl list_permissions -p ${vhost}
+_${transport} sudo rabbitmqctl list_policies -p ${vhost}
