@@ -61,7 +61,7 @@ set -x
 ssh ${broker} -- sudo rabbitmqctl add_user ${user} ${password}
 ssh ${broker} -- sudo rabbitmqctl add_vhost ${vhost}
 ssh ${broker} -- sudo rabbitmqctl set_permissions -p ${vhost} ${user} \".*\" \".*\" \".*\"
-ssh ${broker} -- sudo rabbitmqctl set_policy -p ${vhost} HA \'.*\' \'{"ha-mode": "all"}\'
+ssh ${broker} -- sudo rabbitmqctl set_policy -p ${vhost} HA \'.*\' \'{\"ha-mode\": \"all\"}\'
 
 ssh ${broker} -- sudo rabbitmqctl list_permissions -p ${vhost}
 ssh ${broker} -- sudo rabbitmqctl list_policies -p ${vhost}
