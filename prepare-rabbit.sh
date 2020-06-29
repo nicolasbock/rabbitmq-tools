@@ -54,7 +54,23 @@ add_sshkey() {
 }
 
 install_rabbitmq() {
-  all_brokers sudo apt --assume-yes install rabbitmq-server
+  for broker in ${brokers[@]}; do
+    while true; do
+      if ! _${transport} ${broker} sudo fuser -s /var/lib/dpkg/lock{,-frontend}; then
+        _${transport} ${broker} sudo apt --assume-yes update && break
+      fi
+      sleep 1
+    done
+  done
+
+  for broker in ${brokers[@]}; do
+    while true; do
+      if ! _${transport} ${broker} sudo fuser -s /var/lib/dpkg/lock{,-frontend}; then
+        _${transport} ${broker} sudo apt --assume-yes install rabbitmq-server && break
+      fi
+      sleep 1
+    done
+  done
 }
 
 cluster_rabbitmq() {
