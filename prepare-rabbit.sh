@@ -94,6 +94,16 @@ configure_rabbitmq() {
   _${transport} ${brokers[0]} sudo rabbitmqctl set_policy -p ${vhost} HA ".*" '{"ha-mode": "all"}'
   _${transport} ${brokers[0]} sudo rabbitmqctl list_permissions -p ${vhost}
   _${transport} ${brokers[0]} sudo rabbitmqctl list_policies -p ${vhost}
+
+  _${transport} ${brokers[0]} sudo bash -c 'cat > /etc/rabbitmq/rabbitmq.config' <<EOF
+[
+  {rabbit, [
+    {mnesia_table_loading_retry_timeout, 1000},
+    {mnesia_table_loading_retry_limit, 2}
+  ]}
+].
+EOF
+  _${transport} ${brokers[0]} sudo systemctl restart rabbitmq-server.service
 }
 
 user=tester
