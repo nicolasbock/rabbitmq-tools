@@ -1,5 +1,7 @@
 # RabbitMQ Testing
 
+![Lint](https://github.com/nicolasbock/rabbitmq-tools/workflows/CI/badge.svg)
+
 This repository contains a simple test script to test a RabbitMQ
 cluster.
 
