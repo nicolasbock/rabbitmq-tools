@@ -1,4 +1,4 @@
-# RabbitMQ Testing
+# RabbitMQ-Test-Tool
 
 ![Lint](https://github.com/nicolasbock/rabbitmq-tools/workflows/CI/badge.svg)
 [![PyPI version](https://badge.fury.io/py/RabbitMQ-Test-Tools.svg)](https://badge.fury.io/py/RabbitMQ-Test-Tools)
@@ -37,14 +37,14 @@ Set up a `virtualenv` to run the actual test script:
 
 Now send a message:
 
-    $ test-rabbit.py 10.5.0.1 --send "My first message"
+    $ rabbitmq-test-tool 10.5.0.1 --send "My first message"
 
 Full usage:
 
-    usage: test-rabbit.py [-h] [--durable] [--queue QUEUE] [--send MSG] [--get]
-                          [--list] [--user USER] [--password PASSWORD]
-                          [--vhost VHOST] [--delete QUEUE]
-                          BROKER [BROKER ...]
+    usage: rabbitmq-test-tool [-h] [--durable] [--queue QUEUE] [--send MSG] [--get]
+                              [--list] [--user USER] [--password PASSWORD]
+                              [--vhost VHOST] [--delete QUEUE]
+                              BROKER [BROKER ...]
 
     positional arguments:
       BROKER               The IP address or hostname of the broker, default =
