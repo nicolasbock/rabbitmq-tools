@@ -1,6 +1,7 @@
 # RabbitMQ Testing
 
 ![Lint](https://github.com/nicolasbock/rabbitmq-tools/workflows/CI/badge.svg)
+[![PyPI version](https://badge.fury.io/py/RabbitMQ-Test-Tools.svg)](https://badge.fury.io/py/RabbitMQ-Test-Tools)
 
 This repository contains a simple test script to test a RabbitMQ
 cluster.
