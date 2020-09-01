@@ -12,7 +12,7 @@ except TypeError:
 
 setuptools.setup(
     name="RabbitMQ Test Tool",
-    version="1.1.3",
+    version="1.1.4",
     description="A simple test script to test a RabbitMQ cluster",
     long_description=long_description,
     long_description_content_type="text/markdown",
