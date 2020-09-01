@@ -1,4 +1,4 @@
-from rabbitmqtools import commandline, connection
+from rabbitmqtesttool import commandline, connection
 
 
 def main():

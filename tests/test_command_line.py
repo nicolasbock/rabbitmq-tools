@@ -7,7 +7,7 @@ try:
 except ImportError:
     from mock import patch
 
-from rabbitmqtools import commandline
+from rabbitmqtesttool import commandline
 
 
 class TestCommandLine(unittest.TestCase):
