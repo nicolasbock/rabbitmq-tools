@@ -2,7 +2,7 @@ import setuptools
 
 setuptools.setup(
     name="RabbitMQ Test Tools",
-    version="1.0.3",
+    version="1.1.0",
     description="This is a test",
     long_description="...",
     long_description_content_type="text/markdown",
