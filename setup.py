@@ -6,12 +6,12 @@ this_directory = path.abspath(path.dirname(__file__))
 try:
     with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
         long_description = f.read()
-except:
+except TypeError:
     with open(path.join(this_directory, 'README.md')) as f:
         long_description = f.read()
 
 setuptools.setup(
-    name="RabbitMQ Test Tools",
+    name="RabbitMQ Test Tool",
     version="1.1.0",
     description="This is a test",
     long_description=long_description,
@@ -20,7 +20,7 @@ setuptools.setup(
     packages=setuptools.find_packages(),
     entry_points={
         "console_scripts": [
-            "rabbitmq-tools = rabbitmqtools.main:main",
+            "rabbitmq-test-tool = rabbitmqtesttool.main:main",
         ],
     }
 )
