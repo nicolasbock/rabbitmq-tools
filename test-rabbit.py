@@ -35,15 +35,18 @@ def parse_command_line():
         action="store_true")
     parser.add_argument(
         "--user",
-        help="The user to use for the RabbitMQ connection, default = %(default)s",
+        help="The user to use for the RabbitMQ connection, "
+        "default = %(default)s",
         default="tester")
     parser.add_argument(
         "--password",
-        help="The password to use for the RabbitMQ connection, default = %(default)s",
+        help="The password to use for the RabbitMQ connection, "
+        "default = %(default)s",
         default="linux")
     parser.add_argument(
         "--vhost",
-        help="The vhost to use for the RabbitMQ connection, default = %(default)s",
+        help="The vhost to use for the RabbitMQ connection, "
+        "default = %(default)s",
         default="tester")
     parser.add_argument(
         "--delete",
@@ -71,7 +74,8 @@ def open_connection(broker, vhost, user, password, queue_name, durable):
 def main(options):
     for broker in options.BROKER:
         connection, channel = open_connection(
-            broker, options.vhost, options.user, options.password, options.queue, options.durable)
+            broker, options.vhost, options.user, options.password,
+            options.queue, options.durable)
         if connection is None:
             continue
         if options.send:
