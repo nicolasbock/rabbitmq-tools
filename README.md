@@ -1,6 +1,7 @@
 # RabbitMQ-Test-Tool
 
 ![Lint](https://github.com/nicolasbock/rabbitmq-tools/workflows/CI/badge.svg)
+![Publish Python Package](https://github.com/nicolasbock/rabbitmq-test-tool/workflows/Publish%20Python%20Package/badge.svg)
 [![PyPI version](https://badge.fury.io/py/RabbitMQ-Test-Tool.svg)](https://badge.fury.io/py/RabbitMQ-Test-Tool)
 [![rabbitmq-test-tool](https://snapcraft.io//rabbitmq-test-tool/badge.svg)](https://snapcraft.io/rabbitmq-test-tool)
 [![rabbitmq-test-tool](https://snapcraft.io//rabbitmq-test-tool/trending.svg?name=0)](https://snapcraft.io/rabbitmq-test-tool)
