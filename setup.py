@@ -17,7 +17,7 @@ setuptools.setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     author="Nicolas Bock",
-    packages=setuptools.find_packages(),
+    packages=['rabbitmqtesttool'],
     entry_points={
         "console_scripts": [
             "rabbitmq-test-tool = rabbitmqtesttool.main:main",
