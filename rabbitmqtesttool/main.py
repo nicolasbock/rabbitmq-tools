@@ -1,10 +1,10 @@
-from rabbitmqtesttool import commandline, connection
+from rabbitmqtesttool import commandline, connection as rtt_connection
 
 
 def main():
     options = commandline.parse_command_line()
     for broker in options.BROKER:
-        connection, channel = connection.open_connection(
+        connection, channel = rtt_connection.open_connection(
             broker, options.vhost, options.user, options.password,
             options.queue, options.durable)
         if connection is None:
