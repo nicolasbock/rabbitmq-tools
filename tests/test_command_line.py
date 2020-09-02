@@ -21,3 +21,8 @@ class TestCommandLine(unittest.TestCase):
             self.assertTrue(isinstance(options.BROKER, list))
             self.assertEquals(len(options.BROKER), 1)
             self.assertEquals(options.BROKER[0], "127.0.0.1")
+
+    def testListQueues(self):
+        with patch.object(sys, 'argv', self.args + ['--list-queues']):
+            options = commandline.parse_command_line()
+            self.assertTrue(options.list_queues)

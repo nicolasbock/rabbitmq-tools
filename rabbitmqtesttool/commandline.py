@@ -12,6 +12,10 @@ def parse_command_line():
         "--durable",
         action="store_true")
     parser.add_argument(
+        "--list-queues",
+        help="List queues",
+        action="store_true")
+    parser.add_argument(
         "--queue",
         help="The queue to use, default = %(default)s",
         type=str,
