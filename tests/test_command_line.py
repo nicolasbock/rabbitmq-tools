@@ -19,5 +19,5 @@ class TestCommandLine(unittest.TestCase):
         with patch.object(sys, 'argv', self.args):
             options = commandline.parse_command_line()
             self.assertTrue(isinstance(options.BROKER, list))
-            self.assertEquals(len(options.BROKER), 1)
-            self.assertEquals(options.BROKER[0], "127.0.0.1")
+            self.assertEqual(len(options.BROKER), 1)
+            self.assertEqual(options.BROKER[0], "127.0.0.1")
