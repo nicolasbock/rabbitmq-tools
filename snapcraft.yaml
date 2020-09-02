@@ -18,3 +18,5 @@ parts:
 apps:
   rabbitmq-test-tool:
     command: bin/rabbitmq-test-tool
+    plugs:
+      - network-bind
