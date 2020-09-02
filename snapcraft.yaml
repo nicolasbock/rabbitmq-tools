@@ -1,5 +1,5 @@
 name: rabbitmq-test-tool
-version: 1.1.4
+version: git
 summary: RabbitMQ-Test-Tool
 description: |
   A simple test script to test a RabbitMQ cluster
