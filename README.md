@@ -5,6 +5,8 @@
 [![PyPI version](https://badge.fury.io/py/RabbitMQ-Test-Tool.svg)](https://badge.fury.io/py/RabbitMQ-Test-Tool)
 [![rabbitmq-test-tool](https://snapcraft.io//rabbitmq-test-tool/badge.svg)](https://snapcraft.io/rabbitmq-test-tool)
 [![rabbitmq-test-tool](https://snapcraft.io//rabbitmq-test-tool/trending.svg?name=0)](https://snapcraft.io/rabbitmq-test-tool)
+![GitHub issues](https://img.shields.io/github/issues/nicolasbock/rabbitmq-test-tool)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/nicolasbock/rabbitmq-test-tool)
 
 [![Get it from the Snap Store](https://snapcraft.io/static/images/badges/en/snap-store-black.svg)](https://snapcraft.io/rabbitmq-test-tool)
 
