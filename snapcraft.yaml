@@ -2,7 +2,7 @@ name: rabbitmq-test-tool
 summary: RabbitMQ-Test-Tool
 description: |
   A simple test script to test a RabbitMQ cluster
-base: core20
+base: core18
 confinement: strict
 adopt-info: rabbitmq-test-tool
 
@@ -10,6 +10,8 @@ parts:
   rabbitmq-test-tool:
     plugin: python
     source: .
+    build-packages:
+      - git
     requirements:
       - requirements.txt
     override-pull: |
