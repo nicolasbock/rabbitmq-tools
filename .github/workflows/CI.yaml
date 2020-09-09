@@ -18,6 +18,15 @@ jobs:
         run: sudo apt install tox
       - name: Lint the code
         run: tox -e lint
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install packages
+        run: sudo apt install tox
       - name: Test the code (Python 2.7)
         run: tox -e py27
       - name: Test the code (Python 3.8)
