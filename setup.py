@@ -1,6 +1,14 @@
-from bin import get_version
 from os import path
 import setuptools
+
+try:
+    from bin import get_version
+
+    def local_version():
+        return get_version.get_version()
+except Exception:
+    def local_version():
+        return "undefined"
 
 
 def long_description():
@@ -16,12 +24,12 @@ def long_description():
 
 setuptools.setup(
     name="RabbitMQ Test Tool",
-    version=get_version.get_version(),
+    version=local_version(),
     description="A simple test script to test a RabbitMQ cluster",
     long_description=long_description(),
     long_description_content_type="text/markdown",
     author="Nicolas Bock",
-    packages=['rabbitmqtesttool', 'bin'],
+    packages=['rabbitmqtesttool'],
     entry_points={
         "console_scripts": [
             "rabbitmq-test-tool = rabbitmqtesttool.main:main",
