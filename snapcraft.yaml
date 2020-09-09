@@ -16,8 +16,7 @@ parts:
       - requirements.txt
     override-pull: |
       snapcraftctl pull
-      version=$(git describe --tags)
-      snapcraftctl set-version "${version#v}"
+      snapcraftctl set-version "$(bin/get_version.py)"
 
 apps:
   rabbitmq-test-tool:
