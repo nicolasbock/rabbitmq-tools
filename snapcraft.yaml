@@ -1,19 +1,21 @@
 name: rabbitmq-test-tool
-version: git
 summary: RabbitMQ-Test-Tool
 description: |
   A simple test script to test a RabbitMQ cluster
-base: core18
+base: core20
 confinement: strict
-
+adopt-info: rabbitmq-test-tool
 
 parts:
   rabbitmq-test-tool:
     plugin: python
-    python-version: python3
     source: .
     requirements:
       - requirements.txt
+    override-pull: |
+      snapcraftctl pull
+      version=$(git describe --tags)
+      snapcraftctl set-version "${version#v}"
 
 apps:
   rabbitmq-test-tool:
